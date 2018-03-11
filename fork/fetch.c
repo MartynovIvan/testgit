@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <signal.h>
 #include <stdio.h>
 
@@ -27,11 +28,12 @@ int main()
     if ( c == 'q' )
     {
       kill( childPID, SIGKILL );
+      waitpid(childPID, NULL, 0);
       break;
     }
 
-    sleep( 1 );
   }
+  sleep( 100 ); [D
 
   return 0;
 } 
